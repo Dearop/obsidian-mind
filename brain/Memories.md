@@ -18,4 +18,5 @@ Persistent context and knowledge retained across sessions. Each topic lives in i
 
 ## Recent Context
 
--
+- [[Jarvis Setup]] — full Jarvis operational context (capabilities, tasks, credentials, vault access)
+- [[Paul Quesnot]] — vault owner profile, preferences, apartment criteria
