@@ -19,3 +19,5 @@ Persistent context and knowledge retained across sessions. Each topic lives in i
 ## Recent Context
 
 - 2026-04-16 — Migrated whir-p3 from BabyBear to KoalaBear; captured reusable [[Plonky3 Field Migration Checklist]] with ext-field W, Poseidon2 round numbers, and sed pitfalls.
+- [[Jarvis Setup]] — full Jarvis operational context (capabilities, tasks, credentials, vault access)
+- [[Paul Quesnot]] — vault owner profile, preferences, apartment criteria
