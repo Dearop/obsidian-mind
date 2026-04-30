@@ -116,13 +116,23 @@ Per vault rules, each note should cover ONE concept. Flag notes that:
 - Mix personal conversations with project evidence
 - Have 3+ independent sections that don't need each other
 
-### 11. Check Claude Config
+### 11. Clean Up Auto-Summary Drafts
+
+The `PreCompact` hook writes drafts to `thinking/session-summaries/`; `/om-wrap-up` moves triaged ones to `thinking/session-summaries/promoted/`. Maintain both:
+
+- **Live drafts** (`thinking/session-summaries/*.md`): if any are older than 7 days and still unpromoted, flag them — either the user skipped `/om-wrap-up` or the content wasn't worth promoting. Ask whether to promote, move to `promoted/`, or delete.
+- **Promoted drafts** (`thinking/session-summaries/promoted/*.md`): delete any older than 30 days. The raw transcript in `thinking/session-logs/` remains the audit trail (already capped at 30 backups by `pre-compact.sh`).
+- **`.latest` pointer**: if it exists and points to a file that's already in `promoted/` or doesn't exist, delete the pointer — it's stale.
+
+Use `git rm` for deletions so history is preserved.
+
+### 12. Check Claude Config
 
 - `.claude/settings.json` — are hooks well-formed and referencing correct paths?
 - `.claude/commands/` — do all commands reference correct folder structure?
 - `CLAUDE.md` — any stale instructions that contradict current vault state?
 
-### 12. Fix and Report
+### 13. Fix and Report
 
 - Fix what's clearly wrong (broken links, missing frontmatter, duplicate tags, wrong folder)
 - For ambiguous issues, list them and ask the user

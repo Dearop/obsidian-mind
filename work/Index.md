@@ -19,7 +19,8 @@ Incident docs live in `work/incidents/`. See `Incidents.base` for overview.
 
 ## Active Projects
 
--
+- [[whir-bench Crate Migration]] — consolidating whir-p3 benchmarks into a dedicated crate.
+- [[whir-bench Scheme Mapping]] — 4 schemes routed through existing `warp_ivc` APIs.
 
 ## Review Prep
 
@@ -45,7 +46,7 @@ Incident docs live in `work/incidents/`. See `Incidents.base` for overview.
 
 | Date | Decision | Status | Link |
 |------|----------|--------|------|
-|      |          |        |      |
+| 2026-04-15 | Unify whir-p3 benchmarks behind `whir-bench` crate | Landed | [[whir-bench Crate Migration]] |
 
 ## Open Questions
 

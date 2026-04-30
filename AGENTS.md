@@ -28,6 +28,10 @@ The hook scripts in `.claude/scripts/` are agent-agnostic Python and shell — n
 - **Claude Code / Gemini CLI**: invoke as `/om-standup`, `/om-dump`, etc.
 - **Codex CLI**: type the command name as a regular prompt without the `/` prefix (e.g. `om-standup`). Codex will find and execute the command file.
 
+## Research Wiki
+
+The vault includes an LLM-maintained research wiki in `research/` with immutable source material in `raw/`. See `CLAUDE.md` for full conventions. Key rules: never edit `raw/` files, keep `research/Index.md` and `research/Log.md` current after any ingest or synthesis, and link aggressively with `[[wikilinks]]`.
+
 ## Memory
 
 The vault's memory lives in `brain/` — `Memories.md`, `Patterns.md`, `Key Decisions.md`, `Gotchas.md`. These are plain markdown files that any agent can read and write. When you learn something worth remembering, write it to the relevant `brain/` topic note with a wikilink to context.

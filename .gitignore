@@ -16,3 +16,9 @@
 
 # Session logs (local transcripts)
 thinking/session-logs/
+
+# Raw source binaries (PDFs, images, etc.)
+raw/**/*.pdf
+raw/**/*.epub
+raw/**/*.mobi
+raw/assets/

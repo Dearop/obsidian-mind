@@ -103,8 +103,33 @@ Subagents run in isolated context windows via `.claude/agents/`. They don't poll
 | SessionStart | On startup/resume | QMD re-index, inject North Star, active work, recent changes, tasks, file listing |
 | UserPromptSubmit | Every message | Classify content (decision, incident, 1:1, win, architecture, person, project update) and inject routing hints |
 | PostToolUse | After writing `.md` | Validates frontmatter, checks for wikilinks |
-| PreCompact | Before context compaction | Back up session transcript to `thinking/session-logs/` |
+| PreCompact | Before context compaction | Back up session transcript to `thinking/session-logs/`; on auto-triggers, launch local ollama summarizer (detached) to write a draft into `thinking/session-summaries/` |
 | Stop | End of session | Checklist: archive, update indexes, check orphans |
+
+## Auto-summarizer (local ollama)
+
+On auto-compaction, `pre-compact.sh` launches `.claude/scripts/summarize-session.py` detached. It reads the transcript, retrieves a wikilink vocabulary from QMD, calls a local ollama model, and writes a structured draft to `thinking/session-summaries/<timestamp>.md` plus a `.latest` pointer. `/om-wrap-up` triages the draft; promoted drafts move to `thinking/session-summaries/promoted/`; `/om-vault-audit` deletes those older than 30 days.
+
+Design guarantees:
+- Never blocks compaction — runs detached, hook exits in <100ms.
+- Never leaves the machine — local ollama, no API calls. Transcripts can contain 1:1s, comp, incidents; keep them local.
+- Never pollutes semantic search — `thinking/session-summaries/**` is excluded from the QMD collection mask.
+- Never writes authoritative memory — drafts are triage input for `/om-wrap-up`. Only the human-confirmed promotion path lands items in `work/`, `org/`, `perf/`, or `brain/`.
+- Only runs on `trigger=auto`. Manual compactions are user-driven; a summary would land too late to matter that session.
+
+Env knobs (set in your shell profile):
+
+| Variable | Effect | Default |
+|----------|--------|---------|
+| `OM_SUMMARIZER_DISABLE=1` | Skip the summarizer entirely | unset (enabled) |
+| `OM_SUMMARIZER_MODEL` | ollama model tag | `qwen2.5:14b` |
+| `OLLAMA_HOST` | ollama endpoint | `http://127.0.0.1:11434` |
+
+Troubleshooting:
+- **Nothing appears in `thinking/session-summaries/`**: check `thinking/session-summaries/.summarizer.log`. Most common cause: ollama not running (`ollama serve`) or model not pulled (`ollama pull qwen2.5:14b`). The hook is non-fatal — compaction still succeeded, you just didn't get a draft.
+- **Draft has no `[[wikilinks]]`**: QMD collection isn't registered. Run `qmd collection add . --name vault --mask "**/*.md,!thinking/session-summaries/**"` then `qmd update && qmd embed`.
+- **Runtime feels slow**: qwen2.5:14b does ~30 tok/s prefill on M3 Pro, so a 10K-token session takes ~3–5 minutes including cold model load. Acceptable for a detached background job. Swap to `llama3.1:8b` for ~2× faster at slight quality cost: `export OM_SUMMARIZER_MODEL=llama3.1:8b`.
+- **Privacy concern on a given session**: `OM_SUMMARIZER_DISABLE=1` in the shell before starting Claude Code turns it off for the whole session.
 
 ## Semantic Search (QMD)
 

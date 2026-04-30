@@ -22,6 +22,11 @@ tags:
 
 - [[Index|Work Notes]] | [[People & Context]] | [[Brag Doc]]
 - [[Memories]] | [[North Star]] | [[Skills]]
+- [[research/Index|Research Wiki]] | [[research/Overview|Research Overview]] | [[Research Agenda]]
+
+## Research Sources
+
+![[Research Wiki.base#Sources]]
 
 ## Recent 1:1s
 

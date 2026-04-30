@@ -6,10 +6,12 @@ Personal Obsidian vault -- an external brain for work notes, decisions, performa
 
 This vault has [obsidian-skills](https://github.com/kepano/obsidian-skills) installed in `.claude/skills/`. Follow these skill conventions:
 
-- **obsidian-markdown**: Obsidian-flavored markdown -- wikilinks, embeds, callouts, properties. See `references/` for callout types, embed syntax, and property specs. Always prefer `[[wikilinks]]` over markdown links.
+> Note: `reference/` (singular) is the vault's content folder for codebase knowledge and architecture docs. `references/` (plural) in the items below refers to skill-local support files inside `.claude/skills/.../references/`.
+
+- **obsidian-markdown**: Obsidian-flavored markdown -- wikilinks, embeds, callouts, properties. See the skill-local `references/` files in `.claude/skills/obsidian-markdown/` for callout types, embed syntax, and property specs. Always prefer `[[wikilinks]]` over markdown links.
 - **obsidian-cli**: CLI commands for vault operations when Obsidian is running. See CLI section below.
-- **json-canvas**: Create `.canvas` files with nodes, edges, and visual layouts. See `references/EXAMPLES.md`.
-- **obsidian-bases**: Create `.base` files with views, filters, and formulas. Bases core plugin is enabled. See `references/FUNCTIONS_REFERENCE.md`.
+- **json-canvas**: Create `.canvas` files with nodes, edges, and visual layouts. See the skill-local `references/EXAMPLES.md` in `.claude/skills/json-canvas/`.
+- **obsidian-bases**: Create `.base` files with views, filters, and formulas. Bases core plugin is enabled. See the skill-local `references/FUNCTIONS_REFERENCE.md` in `.claude/skills/obsidian-bases/`.
 - **defuddle**: Extract clean markdown from web pages via `defuddle parse <url> --md`.
 - **qmd**: Semantic search across the vault via [QMD](https://github.com/tobi/qmd). Use PROACTIVELY before reading files -- `qmd query "..."` for hybrid search, `qmd search "..."` for keyword, `qmd vsearch "..."` for semantic. Falls back to grep/glob if QMD not installed.
 
@@ -45,7 +47,7 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `Home.md` | **Vault entry point** -- embedded Base views, quick links | Open this first |
 | `vault-manifest.json` | **Template metadata** -- version, infrastructure vs user content boundaries, frontmatter schemas, version fingerprints | Used by `/om-vault-upgrade` for migration |
 | `CHANGELOG.md` | **Version history** -- tracks template releases (v1--v3.3) with what changed | Reference for upgrade paths |
-| `bases/` | **All Bases centralized** -- dynamic views for navigation | `Work Dashboard`, `Incidents`, `People Directory`, `1-1 History`, `Review Evidence`, `Competency Map`, `Templates` |
+| `bases/` | **All Bases centralized** -- dynamic views for navigation | `Work Dashboard`, `Incidents`, `People Directory`, `1-1 History`, `Review Evidence`, `Competency Map`, `Research Wiki`, `Templates` |
 | `work/` | Work notes index | `Index.md` (detailed MOC) |
 | `work/active/` | **Current projects only** (1-3 files) | Move here when starting, move to archive when done |
 | `work/archive/YYYY/` | Completed work organized by year | Grows over time |
@@ -61,9 +63,16 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `org/` | Organizational knowledge index | `People & Context.md` (MOC) |
 | `org/people/` | Atomic person notes | One note per person |
 | `org/teams/` | Team notes as graph nodes | One note per team |
+| `research/` | **LLM-maintained research wiki** -- sources, concepts, entities, syntheses, open questions | `Index.md` (catalog), `Log.md` (activity), `Overview.md` |
+| `research/sources/` | One page per processed paper/article/book | Source summaries with metadata |
+| `research/concepts/` | Topics, methods, frameworks, theories | Concept definitions with math background |
+| `research/entities/` | Proof systems, tools, projects (non-person entities) | Named entity pages |
+| `research/syntheses/` | Literature reviews, comparisons, reading maps | Higher-level analysis |
+| `research/open_questions/` | Unresolved questions, research gaps | Follow-up prompts |
+| `raw/` | **Immutable source material** -- papers, articles, books, assets | Do not edit; read and cite only |
 | `reference/` | Codebase knowledge, architecture maps | Flow docs, architecture docs |
 | `thinking/` | Scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
-| `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, etc. |
+| `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, `Research Source.md`, `Research Concept.md`, `Research Entity.md`, `Research Synthesis.md`, `Research Open Question.md`, etc. |
 | `.claude/commands/` | 18 slash commands | See command table above |
 | `.claude/agents/` | 9 subagents | See subagents table below |
 | `.claude/scripts/` | Hook scripts | `session-start.sh`, `classify-message.py`, `validate-write.py`, `pre-compact.sh` |
@@ -166,6 +175,11 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
 | Team note | `org/teams/` | Team name | Members, Scope, Interactions |
 | Competency | `perf/competencies/` | Competency name | Definition, level criteria, Evidence (via backlinks) |
 | Brain note | `brain/` | Topic name | Topic-specific content |
+| Research source | `research/sources/` | Paper/article title | Summary, Key Claims, Methods, Connections, Open Questions |
+| Research concept | `research/concepts/` | Concept name | Definition, Why It Matters, Math Background, Evidence, Related |
+| Research entity | `research/entities/` (systems) or `org/people/` (researchers) | Entity name | Who/What, Relevance, Associated Sources, Related |
+| Research synthesis | `research/syntheses/` | Comparison/map title | Thesis, Takeaways, Comparison, Evidence, Tensions |
+| Research question | `research/open_questions/` | Question title | Question, Current Evidence, Missing Evidence, Follow-ups |
 
 ### Linking -- This Is Critical
 
@@ -209,6 +223,8 @@ Update these when creating or archiving notes:
 - **`brain/Skills.md`** -- register vault-specific workflows and slash commands
 - **`org/People & Context.md`** -- update when people, teams, or org structure changes
 - **`perf/Brag Doc.md`** -- log wins with links to evidence, add new quarters as needed
+- **`research/Index.md`** -- catalog of research wiki pages, organized by type (sources, concepts, entities, syntheses, open questions)
+- **`research/Log.md`** -- append-only chronological log of research wiki activity (ingests, queries, lint passes)
 
 ### Decision Records
 
@@ -292,6 +308,13 @@ When asked to "remember" something:
 - **Tracking active project work?** -- `work/active/`
 - **Capturing an incident?** -- `work/incidents/` (use `/om-incident-capture`)
 - **Dumping unstructured info?** -- use `/om-dump` to auto-classify and route everything
+- **Ingesting a research paper/article?** -- `research/sources/`, update `research/Index.md` and `research/Log.md`
+- **Writing about a research concept/method?** -- `research/concepts/`
+- **Writing about a researcher?** -- `org/people/` (with `type: person` and researcher tags)
+- **Writing about a proof system/tool/lab?** -- `research/entities/`
+- **Comparing or synthesizing research?** -- `research/syntheses/`
+- **Noting a research gap or open question?** -- `research/open_questions/`
+- **Dropping raw source material?** -- `raw/` (immutable -- never edit files here)
 
 ### Don't Mix Contexts
 
@@ -328,6 +351,52 @@ Five lifecycle hooks in `.claude/settings.json`:
 | PostToolUse | After writing `.md` | Validates frontmatter, checks for wikilinks |
 | PreCompact | Before context compaction | Backs up session transcript to `thinking/session-logs/` |
 | Stop | End of every session | Lightweight checklist reminder: archive, update indexes, check orphans. For thorough review, use `/om-wrap-up` instead. |
+
+## Research Wiki
+
+The `research/` section is an LLM-maintained research wiki for interests, study plans, and research papers. The `raw/` directory holds immutable source material.
+
+### Research operating principles
+
+1. **Do not edit raw sources.** Files in `raw/` are source-of-truth inputs. Read, summarize, and cite them -- never rewrite or rename.
+2. **The wiki is the working knowledge base.** Pages in `research/` reflect current synthesized understanding. When new evidence arrives, update existing pages instead of creating isolated summaries.
+3. **Knowledge should compound.** Good answers, comparisons, and research notes should be filed back into `research/syntheses/`. Prefer maintaining strong canonical pages over many redundant ones.
+4. **Be explicit about uncertainty.** Distinguish facts, interpretations, hypotheses, and open questions. Record disagreements instead of flattening them.
+5. **Keep the research index and log current.** `research/Index.md` is the catalog, `research/Log.md` is the chronological record. Any meaningful ingest or synthesis should update both.
+
+### Research ingest workflow
+
+1. Locate the source in `raw/`.
+2. Read the source, extract metadata (title, authors, year, source kind).
+3. Create or update the page in `research/sources/`.
+   - **For papers**: full formal breakdown — state definitions, theorems, and key equations in LaTeX. Cite section/page numbers. Include complexity/performance bounds. Be rigorous, not hand-wavy.
+   - **For lighter sources** (articles, talks, podcasts): summary-focused, less formal.
+4. Update affected pages in `research/concepts/`, `research/entities/`, `research/syntheses/`, `research/open_questions/`.
+5. Add wikilinks between the new source and related pages.
+6. Check `research/Contradictions.md` — if the source disagrees with existing wiki content, add an entry.
+7. Update `research/Index.md` and append to `research/Log.md`.
+8. **Suggest next papers** — after each ingest, recommend what to read next and flag missing sources.
+9. **Ingest one source at a time** with user review. No batch processing.
+
+### Research lint workflow (every 10 sources)
+
+1. Check for orphan pages, broken links, duplicate/near-duplicate content.
+2. Review and resolve `research/Contradictions.md` — move resolved entries to the Resolved section.
+3. Identify concepts repeatedly mentioned but lacking their own page.
+4. Check for stale summaries superseded by newer sources.
+5. Verify index coverage and backlink health.
+6. Suggest missing sources and next papers based on gaps in the wiki.
+7. Append a lint summary to `research/Log.md`.
+
+### Research frontmatter
+
+Research pages use these additional properties beyond the standard `date`, `description`, `tags`:
+
+- Source pages: `type: source`, `status`, `source_kind`, `raw_path`, `authors`, `year`, `related`
+- Concept pages: `type: concept`, `related`
+- Entity pages: `type: entity`, `entity_kind`, `related`
+- Synthesis pages: `type: synthesis`, `status`, `related`
+- Open question pages: `type: open_question`, `related`
 
 ## Rules
 

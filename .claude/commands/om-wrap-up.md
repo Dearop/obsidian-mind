@@ -16,6 +16,21 @@ Triggered when the user says "wrap up", "let's wrap", "wrapping up", or similar.
 
 ## Workflow
 
+### 0. Triage auto-summary draft (if present)
+
+The `PreCompact` hook auto-generates session summary drafts via local ollama. Check for one and triage it before the rest of the workflow — the draft often surfaces items the user didn't mention in conversation.
+
+1. Read `thinking/session-summaries/.latest` — if it doesn't exist, skip this step.
+2. Read the file named by `.latest` (e.g. `thinking/session-summaries/2026-04-15-1112.md`).
+3. For each unchecked item under **Decisions**, **People mentioned**, **Wins**, **Open threads**, and **Notable context**, ask the user one of:
+   - **Promote** — create a real linked note in the correct folder using the standard flow (Decision Record → `work/`, Person → `org/people/`, Win → append to `perf/Brag Doc.md`, Open thread → `thinking/` or relevant work note, Notable context → `brain/Patterns.md` or `brain/Gotchas.md`).
+   - **Defer** — leave the checkbox unchecked; it carries forward.
+   - **Drop** — uninteresting or already captured elsewhere.
+4. After triage, move the processed summary: `mkdir -p thinking/session-summaries/promoted/ && git mv <draft> thinking/session-summaries/promoted/`. This removes it from the live drafts folder while preserving history.
+5. Delete `thinking/session-summaries/.latest` — the next auto-compaction will regenerate it.
+
+Drafts are triage input, not authoritative memory. Never promote an item into the vault without explicit user confirmation for that specific item. Never modify the draft's contents — move or delete only.
+
 ### 1. Review What Was Done
 
 Scan the conversation for:

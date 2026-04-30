@@ -1,0 +1,93 @@
+filters:
+  and:
+    - file.inFolder("research")
+    - file.ext == "md"
+    - '!file.inFolder("templates")'
+formulas:
+  age_days: 'if(date, (today() - date(date)).days, "")'
+  source_count: 'file.links.length'
+properties:
+  file.name:
+    displayName: Page
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  description:
+    displayName: Summary
+  date:
+    displayName: Created
+  formula.age_days:
+    displayName: "Days Old"
+  formula.source_count:
+    displayName: Links
+  authors:
+    displayName: Authors
+  year:
+    displayName: Year
+  source_kind:
+    displayName: Kind
+views:
+  - type: table
+    name: Sources
+    filters:
+      and:
+        - 'type == "source"'
+    order:
+      - file.name
+      - authors
+      - year
+      - source_kind
+      - status
+      - description
+    groupBy:
+      property: source_kind
+      direction: ASC
+  - type: table
+    name: Concepts
+    filters:
+      and:
+        - 'type == "concept"'
+    order:
+      - file.name
+      - formula.source_count
+      - description
+    summaries:
+      formula.source_count: Average
+  - type: table
+    name: Syntheses
+    filters:
+      and:
+        - 'type == "synthesis"'
+    order:
+      - file.name
+      - status
+      - date
+      - description
+  - type: table
+    name: Entities
+    filters:
+      and:
+        - 'type == "entity"'
+    order:
+      - file.name
+      - description
+  - type: table
+    name: Open Questions
+    filters:
+      and:
+        - 'type == "open_question"'
+    order:
+      - file.name
+      - description
+  - type: table
+    name: All Pages
+    order:
+      - file.name
+      - type
+      - status
+      - date
+      - description
+    groupBy:
+      property: type
+      direction: ASC
