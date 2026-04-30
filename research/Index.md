@@ -2,7 +2,7 @@
 date: 2026-04-10
 type: index
 created: 2026-04-10
-updated: 2026-04-13
+updated: 2026-04-30
 tags:
   - wiki
   - navigation
@@ -52,6 +52,8 @@ A compact catalog of the current wiki. Start here when navigating the vault.
 - [[Quasar Sublinear Accumulation Schemes for Multiple Instances]] — Multi-instance accumulation / IVC paper targeting sublinear verifier dependence on accumulated instances.
 - [[Symphony Scalable SNARKs in the Random Oracle Model from Lattice-Based High-Arity Folding]] — Folding-based SNARK anchor built around high-arity lattice folding and commit-and-prove compilation.
 - [[VEIL Lightweight Zero-Knowledge for Hash-Based Multilinear Proof Systems]] — Lightweight compiler for adding zero knowledge to hash-based multilinear proof systems.
+- [[Zero-Knowledge IOPPs for Constrained Interleaved Codes]] — HVZK IOPP framework for constrained interleaved codes with composable IOR privacy and near-zero overhead.
+- [[HyperPlonk Plonk with Linear-Time Prover and High-Degree Custom Gates]] — Plonk-on-hypercube multilinear proof system with FFT-free prover flow and stronger high-degree custom-gate handling.
 
 ## Concepts
 - [[zkSNARKs]] — Umbrella concept page for zero-knowledge succinct non-interactive arguments of knowledge.
@@ -82,6 +84,7 @@ A compact catalog of the current wiki. Start here when navigating the vault.
 - [[High-Arity Folding]] — Folding strategy that trades recursion depth for larger one-shot batching.
 - [[Commit-and-Prove SNARKs]] — Compiler pattern used by Symphony to avoid embedding Fiat–Shamir logic in recursive statements.
 - [[Multilinear Interactive Oracle Proofs (MIOPs)]] — Useful abstraction for multilinear hash-based proof systems and their zk compilers.
+- [[Constrained Interleaved Codes]] — Interleaving-based constrained-code object for modern code-agnostic IOPP/IOR constructions.
 
 ## Systems
 - [[Spartan]] — Proof-system family introduced in the Spartan paper.
@@ -91,6 +94,7 @@ A compact catalog of the current wiki. Start here when navigating the vault.
 - [[Fractal]] — Transparent post-quantum recursive-proof methodology built from holography and preprocessing.
 - [[Symphony]] — High-arity folding-based SNARK avoiding Fiat–Shamir circuits inside proved statements.
 - [[VEIL]] — Lightweight zk compiler for hash-based multilinear proof systems.
+- [[HyperPlonk]] — Plonk-family multilinear protocol over the Boolean hypercube emphasizing linear-time proving.
 
 ## Researchers (in `org/people/`)
 - [[Srinath Setty]] — Researcher associated with Spartan and related proof-system work.

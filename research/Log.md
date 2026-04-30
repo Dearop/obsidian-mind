@@ -851,3 +851,25 @@ description: "Log — research wiki page"
 - Paper presents IOP of proximity for constrained interleaved linear codes with honest-verifier zero-knowledge
 - Key contributions: zero-knowledge sumcheck IOR and zero-knowledge code-switching IOR
 - Added to research wiki with proper frontmatter and links to [[Interactive Oracle Proofs (IOPs)]] and [[Zero-Knowledge Proofs]]
+
+## [2026-04-30] refine | Rewrote Zero-Knowledge IOPPs source note
+- Replaced raw PDF text dump in [[Zero-Knowledge IOPPs for Constrained Interleaved Codes]] with structured source-note sections:
+  - Summary, Key Claims, Formal Definitions and Results, Methods, Complexity, Connections, Open Questions, Suggested Reading.
+- Added missing `description` and tightened frontmatter tags/related links to match current research wiki conventions.
+- Grounded claims in intro/theorem statements with explicit page references and surfaced assumptions/limitations instead of flattening them.
+- Updated [[research/Index|Index]] Sources catalog entry for this paper.
+
+## [2026-04-30] concept | Added Constrained Interleaved Codes concept page
+- Created [[Constrained Interleaved Codes]] in `research/concepts/` with:
+  - formal framing for interleavings plus constraints,
+  - concise equations and relation-level perspective,
+  - distinctions vs unconstrained interleaving and RS-constrained code viewpoints.
+- Linked the concept to [[Zero-Knowledge IOPPs for Constrained Interleaved Codes]], [[Interactive Oracle Proofs of Proximity (IOPPs)]], and [[Interactive Oracle Reductions (IORs)]].
+- Updated [[research/Index|Index]] Concepts catalog entry.
+
+## [2026-04-30] ingest | Added HyperPlonk paper
+- Ingested paper from `raw/papers/SNARKs & STARKs/Hyperplonk.pdf`.
+- Created source note: [[HyperPlonk Plonk with Linear-Time Prover and High-Degree Custom Gates]].
+- Captured formal hypercube gate/wiring identities, SumCheck-centered proof decomposition, and Section 7 PCS theorem-level highlights.
+- Added system entity note: [[HyperPlonk]] to anchor cross-links.
+- Updated [[research/Index|Index]] under Sources and Systems.
