@@ -29,7 +29,12 @@ Vault owner. Connected to Jarvis via Telegram.
 - Prefers web search over X/Twitter for news
 - Comfortable with voice messages; uses them frequently
 - Technically sophisticated — fine with direct, concise answers
-- Apartment hunting: studio or 2-room, Zurich, <1200 CHF/month, ~30 min from ETH Zentrum, available July 1–September 1 2026
+- Apartment hunting: studio or 2-room, Zurich area (all municipalities within ~30 min of ETH Zentrum), <1200 CHF/month, available July 1–September 1 2026
+- **Calendar**: Alert immediately when a new event conflicts with an existing one — do not create silently
+
+## Work
+
+- Works at **The Great Escape** (employer/venue)
 
 ## Related
 
