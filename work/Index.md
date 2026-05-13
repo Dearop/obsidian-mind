@@ -20,6 +20,7 @@ Incident docs live in `work/incidents/`. See `Incidents.base` for overview.
 ## Active Projects
 
 - [[Symphony WHIR Public Verifier]] — moving WHIR toward an authoritative public-only Symphony verifier while keeping typed CP/output flags fail-closed.
+- [[SYMBT3 Accumulator Authority Cleanup]] — cleanup/reporting pass for the SYMBT3 accumulator-authoritative path, K6a NonZK integrity route, and K6b comparison benchmarks.
 - [[whir-bench Crate Migration]] — consolidating whir-p3 benchmarks into a dedicated crate.
 - [[whir-bench Scheme Mapping]] — 4 schemes routed through existing `warp_ivc` APIs.
 
