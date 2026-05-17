@@ -36,7 +36,12 @@ Vault owner. Connected to Jarvis via Telegram.
 
 - Works at **The Great Escape** (employer/venue)
 
+## Travel
+
+- **Rome (May 9–10, 2026)**: Attending **ZKProof 8** at Courtyard by Marriott Rome Central Park, Via Giuseppe Moscati 7, 00168 Roma (near Vatican/Prati). General admission ticket. Has a curated restaurant list (~50 places) with Vatican/Prati area picks highlighted. See [[Roma Ristoranti]].
+
 ## Related
 
 - [[Jarvis Setup]]
 - [[North Star]]
+- [[Roma Ristoranti]]
