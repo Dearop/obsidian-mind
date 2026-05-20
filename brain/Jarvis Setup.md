@@ -29,7 +29,7 @@ Operational context for Jarvis, the NanoClaw AI agent running in a containerized
 
 ### Daily Morning Briefing (`task-1776970858045-66c6tq`)
 - **Schedule**: Every day at 8:00 AM Zurich time
-- **Content**: Top 2-3 stories on AI, ZK, Crypto, Geopolitics + philosophical quote of the day
+- **Content**: Today's Google Calendar events (with context) + top 2-3 stories on AI, ZK, Crypto, Geopolitics + philosophical quote of the day
 - **Source**: Web search only (no X/Twitter)
 
 ### Apartment Monitor (`task-1777112557345-y0y0gr`)
@@ -41,11 +41,11 @@ Operational context for Jarvis, the NanoClaw AI agent running in a containerized
 
 ## Google Calendar
 
-- **Status**: ✅ Connected via OAuth2
+- **Status**: ✅ Connected via OAuth2 (Production — token does not expire)
 - **Credentials**: `/workspace/agent/gcal_credentials.json`
 - **Module**: `/workspace/agent/gcal.js` — exports `createEvent`, `listUpcomingEvents`
-- **Note**: Refresh token may expire in ~7 days (Testing mode). Paul should move app to Production in Google Cloud Console.
-- **Client ID**: 204049232180-k3goptskpv4p3a4pjumtlv9crjce0isr.apps.googleusercontent.com
+- **Client ID**: 204049232180-98tqm87f2t3opakgp1b529aa6duvlq60.apps.googleusercontent.com
+- **OAuth app**: Published to Production on 2026-05-20. Desktop app type. Redirect URI: `http://localhost`.
 
 ## Vault Git Access
 
