@@ -40,6 +40,14 @@ Vault owner. Connected to Jarvis via Telegram.
 
 - **Rome (May 9–10, 2026)**: Attending **ZKProof 8** at Courtyard by Marriott Rome Central Park, Via Giuseppe Moscati 7, 00168 Roma (near Vatican/Prati). General admission ticket. Has a curated restaurant list (~50 places) with Vatican/Prati area picks highlighted. See [[Roma Ristoranti]].
 
+## Life Admin
+
+### KYC Declaration — WG Bank Account (June 15, 2026)
+Signed Allgemeine Sorgfaltspflichten for a WG bank account in Zürich:
+- **Tax domicile**: Exclusively Switzerland — confirmed ✓
+- **Beneficial ownership**: Sole owner — confirmed (account used for WG rent collection; account type solo vs. joint TBD)
+- **PEP**: No PEP involvement — confirmed ✓
+
 ## Related
 
 - [[Jarvis Setup]]
