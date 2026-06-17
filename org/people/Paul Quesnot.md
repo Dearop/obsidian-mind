@@ -12,7 +12,7 @@ Vault owner. Connected to Jarvis via Telegram.
 
 ## Profile
 
-- **Location**: Zurich, Switzerland (Europe/Zurich timezone)
+- **Location**: Alwiesenstrasse 356, 8051 Zürich (from ~July/August 2026)
 - **Email**: rocamar564P@gmail.com
 - **Affiliation**: ETH Zurich area
 
@@ -29,7 +29,6 @@ Vault owner. Connected to Jarvis via Telegram.
 - Prefers web search over X/Twitter for news
 - Comfortable with voice messages; uses them frequently
 - Technically sophisticated — fine with direct, concise answers
-- Apartment hunting: studio or 2-room, Zurich area (all municipalities within ~30 min of ETH Zentrum), <1200 CHF/month, available July 1–September 1 2026
 - **Calendar**: Alert immediately when a new event conflicts with an existing one — do not create silently
 
 ## Work
