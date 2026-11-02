@@ -59,16 +59,21 @@ Volume: Back ~12 sets · Rear delts 3 · Side delts 6 total · Biceps 6+pulling
 
 ## Legs Day
 
-Suggested structure (confirm and update with working weights):
+| Exercise | Weight | Sets × Reps |
+|----------|--------|-------------|
+| Squat | 120 kg | 3×5-6 |
+| Romanian Deadlift | 100 kg | 3×10 |
+| Leg extension | 80 kg | 3×12 |
+| Lying hamstring curl | 45 kg | 3×12 |
+| Leg press calf raises | 150 kg | 3×12 |
 
-| Exercise | Sets × Reps |
-|----------|-------------|
-| Squat or Leg Press | 3-4×5-8 |
-| Romanian Deadlift | 3×8-10 |
-| Leg curl (seated/lying) | 3×10-15 |
-| Leg extension | 3×12-15 |
-| Calf raises | 3×15-20 |
-| Hip abduction (machine) | 2×15-20 |
+### Flagged weak points (to address over time)
+
+- **Calves:** only 3 sets/week — consider +3 sets on another day
+- **Core:** currently missing — add ~4-6 hard sets/week (planks, ab wheel, hanging leg raises)
+- **Rear delts:** add direct rear-delt work on Pull Day (already partially addressed with reverse pec deck)
+- **Frequency:** chest/back/quads/hamstrings only trained once/week; arms + side delts hit twice
+- **Single-leg work:** not essential but Bulgarians, lunges, or single-leg press useful occasionally
 
 ## Swim Sessions
 
